@@ -1,0 +1,90 @@
+BASE DE CONOCIMIENTO
+
+Empresa:
+- Nombre: Constructora isopanel
+- Rubro: Diseño, fabricación y comercialización de viviendas modulares construidas con paneles de isopanel (paneles sándwich con núcleo aislante).
+- Direccion: Ruta IB Km 45
+- Telefono: 091234567
+
+Horarios de atencion:
+- Lunes a viernes: 9:00 - 18:00
+- Sabados: 9:00 - 15:00
+- Domingos: Cerrado 
+- Feriados: Consultar disponibilidad.
+
+Politicas:
+- Medios de pago:
+  - Transferencia bancaria.
+  - Efectivo.
+  - Financiación (si aplica, confirmar).
+  - Tarjetas de crédito/débito (confirmar).
+
+- Entregas/envios:
+  - Se realizan entregas dentro del territorio nacional.
+  - El costo del traslado depende de la ubicación del terreno y del tamaño del proyecto.
+  - El tiempo de entrega varía según el modelo elegido y la carga de producción.
+  - Para proyectos personalizados se informa el plazo al momento del presupuesto.
+
+- Cambios/devoluciones:
+  - Al tratarse de construcciones personalizadas, las modificaciones deben acordarse antes del inicio de la fabricación.
+  - Una vez iniciada la producción pueden existir costos adicionales.
+  - Consultar las condiciones particulares de cada proyecto.
+
+Productos/servicios destacados:
+- Viviendas modulares de distintos tamaños.
+- Casas de 1, 2 y 3 dormitorios.
+- Monoambientes.
+- Oficinas modulares.
+- Cabañas.
+- Locales comerciales.
+- Ampliaciones.
+- Construcciones personalizadas.
+- Proyectos llave en mano (si corresponde).
+- Asesoramiento personalizado.
+- Cotizaciones sin compromiso.
+
+Características de las viviendas:
+- Construcción mediante paneles de isopanel con excelente aislación térmica y acústica.
+- Construcción rápida comparada con métodos tradicionales.
+- Bajo mantenimiento.
+- Materiales resistentes y duraderos.
+- Posibilidad de personalizar distribución y terminaciones.
+- Aptas para vivienda permanente o de descanso.
+- Opciones de ampliación futura según el diseño.
+
+Preguntas frecuentes:
+
+- ¿Qué es el isopanel?
+  Es un panel estructural compuesto por dos chapas metálicas con un núcleo aislante que proporciona excelente aislamiento térmico y acústico.
+
+- ¿Cuánto demora la construcción?
+  Depende del tamaño y nivel de personalización del proyecto. El plazo exacto se informa en el presupuesto.
+
+- ¿Se pueden personalizar los diseños?
+  Sí. Existen modelos estándar y también proyectos personalizados según las necesidades del cliente.
+
+- ¿Las casas incluyen instalación eléctrica y sanitaria?
+  Depende del modelo contratado. Se debe confirmar en cada presupuesto.
+
+- ¿Se puede visitar una casa modelo?
+  Consultar disponibilidad de casas de muestra o proyectos terminados.
+
+- ¿Realizan instalación en todo el país?
+  Consultar según la ubicación del terreno.
+
+- ¿Necesito tener el terreno preparado?
+  Sí. Antes de la instalación el terreno debe cumplir las condiciones indicadas por la empresa.
+
+- ¿Realizan presupuestos?
+  Sí, los presupuestos son personalizados según el modelo, dimensiones y ubicación del proyecto.
+
+- ¿Las viviendas sirven para vivir todo el año?
+  Sí, están diseñadas para uso permanente siempre que se construyan según las especificaciones del proyecto.
+
+Notas de negocio:
+- El asistente nunca debe inventar precios.
+- El asistente nunca debe inventar plazos de entrega.
+- El asistente nunca debe prometer financiación si no está confirmada.
+- Si el cliente solicita un presupuesto, debe recomendar contactar a un asesor indicando medidas, ubicación del terreno y características deseadas.
+- Si una consulta no está en este archivo, el asistente debe responder que no dispone de esa información confirmada y sugerir contactar a un asesor.
+- Ante conflictos, este documento es la fuente de verdad.

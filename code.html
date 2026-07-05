@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Groq AI Chat - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;family=Geist:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fill-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #434655;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8d90a0;
+        }
+        @keyframes pulse-neon {
+            0%, 100% { opacity: 1; filter: drop-shadow(0 0 2px #4ae176); }
+            50% { opacity: 0.6; filter: drop-shadow(0 0 8px #4ae176); }
+        }
+        .animate-neon {
+            animation: pulse-neon 2s infinite ease-in-out;
+        }
+    </style>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#8d90a0",
+                    "tertiary-fixed-dim": "#4ae176",
+                    "surface-container-highest": "#2d3449",
+                    "primary-fixed": "#dbe1ff",
+                    "secondary": "#d0bcff",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "surface-dim": "#0b1326",
+                    "surface-tint": "#b4c5ff",
+                    "on-background": "#dae2fd",
+                    "surface-container": "#171f33",
+                    "secondary-fixed-dim": "#d0bcff",
+                    "on-secondary-fixed-variant": "#5516be",
+                    "on-primary": "#002a78",
+                    "on-error-container": "#ffdad6",
+                    "on-tertiary-fixed-variant": "#005321",
+                    "surface-variant": "#2d3449",
+                    "surface-container-lowest": "#060e20",
+                    "on-surface": "#dae2fd",
+                    "inverse-primary": "#0053db",
+                    "error-container": "#93000a",
+                    "on-secondary-container": "#c4abff",
+                    "surface": "#0b1326",
+                    "error": "#ffb4ab",
+                    "tertiary-container": "#007e37",
+                    "inverse-on-surface": "#283044",
+                    "surface-container-high": "#222a3d",
+                    "surface-bright": "#31394d",
+                    "on-error": "#690005",
+                    "on-primary-fixed": "#00174b",
+                    "primary-container": "#2563eb",
+                    "on-secondary": "#3c0091",
+                    "on-primary-container": "#eeefff",
+                    "inverse-surface": "#dae2fd",
+                    "primary": "#b4c5ff",
+                    "on-secondary-fixed": "#23005c",
+                    "on-tertiary": "#003915",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "on-tertiary-fixed": "#002109",
+                    "background": "#0b1326",
+                    "surface-container-low": "#131b2e",
+                    "tertiary-fixed": "#6bff8f",
+                    "secondary-fixed": "#e9ddff",
+                    "outline-variant": "#434655",
+                    "on-surface-variant": "#c3c6d7",
+                    "secondary-container": "#571bc1",
+                    "tertiary": "#4ae176",
+                    "on-tertiary-container": "#c1ffc5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "container-padding-mobile": "16px",
+                    "stack-gap": "16px",
+                    "unit": "4px",
+                    "container-padding-desktop": "32px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-base": ["Inter"],
+                    "code-label": ["Geist"],
+                    "headline-md-mobile": ["Inter"]
+            },
+            "fontSize": {
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-base": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "code-label": ["13px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "headline-md-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-base overflow-hidden selection:bg-primary/30">
+<!-- Top AppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-gutter py-4 bg-surface-container-high border-b border-outline-variant">
+<div class="flex items-center gap-3">
+<span class="font-display-lg text-headline-md font-bold text-primary">Groq AI Chat</span>
+<div class="hidden md:flex flex-col border-l border-outline-variant pl-3">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Chat con IA + métricas de consumo en tiempo real</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 px-3 py-1 bg-tertiary/10 border border-tertiary/20 rounded-full">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-neon"></span>
+<span class="font-code-label text-code-label text-tertiary uppercase tracking-wider">System Online</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-full hover:bg-surface-container-highest transition-colors cursor-pointer active:scale-95 duration-200">
+<span class="material-symbols-outlined text-on-surface-variant">monitoring</span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-container-highest transition-colors cursor-pointer active:scale-95 duration-200">
+<span class="material-symbols-outlined text-on-surface-variant">history</span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-container-highest transition-colors cursor-pointer active:scale-95 duration-200">
+<span class="material-symbols-outlined text-on-surface-variant">settings</span>
+</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant ml-2">
+<img class="w-full h-full object-cover" data-alt="A high-quality professional studio portrait of a young software architect with neutral expression, wearing a sleek black minimalist hoodie. The lighting is low-key with a subtle cyan rim light that matches the dark-mode aesthetic of the interface. The background is a soft-focus dark gray architectural studio environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAilpFvwXCG_Ujg3oTjCWfhk6qklGJxtTxQYjx-cz-Iuf77wdv7ItOf78zO701NLJDIbSUei0jAd5f4dDPo-x93RaTIncv7ZWh2SNMznffKvJHDaNcSJ0ljhr5fl2Xe0ulau1IoMwmJUMCa1vp-cGteHcy_WtZOc_KVNjqWlJbFo4QAHqpvpg1skUkgIKQGXH49OKehE8WWtrpOZyoD_l9DrjiV477D6fFA-lGxzOB9EnbFRsBB9MwVVk7usL2hYAJ22buHV7o_qyM"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Wrapper -->
+<div class="flex h-screen pt-[73px]">
+<!-- Sidebar Navigation -->
+<aside class="hidden md:flex flex-col h-full w-[280px] fixed left-0 top-[73px] py-gutter px-4 bg-surface-dim border-r border-outline-variant z-40">
+<button class="flex items-center justify-center gap-2 w-full py-3 bg-secondary-container text-on-secondary-container rounded-xl font-bold active:scale-98 transform transition-transform hover:bg-secondary-container/90 mb-8 shadow-md">
+<span class="material-symbols-outlined">add</span>
+<span class="font-body-base">New Conversation</span>
+</button>
+<div class="flex-1 flex flex-col gap-2 overflow-y-auto pr-2">
+<p class="font-code-label text-code-label text-outline uppercase tracking-widest px-3 mb-2">History</p>
+<div class="flex items-center gap-3 p-3 bg-surface-container-highest/40 text-on-surface rounded-lg font-bold cursor-pointer transition-all duration-200">
+<span class="material-symbols-outlined text-primary">chat</span>
+<span class="font-body-sm truncate">Llama3 optimization patterns</span>
+</div>
+<div class="flex items-center gap-3 p-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg cursor-pointer transition-all duration-200">
+<span class="material-symbols-outlined">query_stats</span>
+<span class="font-body-sm truncate">Benchmarking API Latency</span>
+</div>
+<div class="flex items-center gap-3 p-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg cursor-pointer transition-all duration-200">
+<span class="material-symbols-outlined">memory</span>
+<span class="font-body-sm truncate">Data processing script</span>
+</div>
+<div class="flex items-center gap-3 p-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg cursor-pointer transition-all duration-200">
+<span class="material-symbols-outlined">history</span>
+<span class="font-body-sm truncate">UI Design Review</span>
+</div>
+</div>
+<div class="mt-auto pt-4 border-t border-outline-variant/30 flex flex-col gap-1">
+<button class="flex items-center gap-3 p-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest rounded-lg transition-all active:scale-95">
+<span class="material-symbols-outlined">delete_sweep</span>
+<span class="font-body-sm">Clear History</span>
+</button>
+<button class="flex items-center gap-3 p-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest rounded-lg transition-all active:scale-95">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-sm">Settings</span>
+</button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-[280px] md:mr-[340px] h-full flex flex-col relative bg-background">
+<!-- Chat Scroll Area -->
+<div class="flex-1 overflow-y-auto px-6 py-8 space-y-8 pb-32">
+<!-- User Message -->
+<div class="flex justify-end gap-4">
+<div class="max-w-[80%] flex flex-col items-end">
+<div class="bg-secondary-container text-on-secondary-container p-4 rounded-2xl rounded-tr-none shadow-sm">
+<p class="font-body-base">¿Puedes explicarme las ventajas de usar la arquitectura Groq LPU para inferencia masiva en comparación con las GPUs tradicionales?</p>
+</div>
+<span class="text-[11px] text-outline mt-1 font-code-label">Sent 14:02</span>
+</div>
+<div class="w-8 h-8 rounded-full bg-secondary flex items-center justify-center flex-shrink-0 text-on-secondary font-bold text-sm">
+                        U
+                    </div>
+</div>
+<!-- AI Response -->
+<div class="flex justify-start gap-4">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0 text-on-primary font-bold text-sm">
+                        G
+                    </div>
+<div class="max-w-[85%] flex flex-col items-start">
+<div class="bg-surface-container-high p-5 rounded-2xl rounded-tl-none border border-outline-variant shadow-sm">
+<p class="font-body-base leading-relaxed mb-4">La arquitectura LPU (Language Processing Unit) de Groq está diseñada específicamente para cargas de trabajo secuenciales, como la inferencia de LLMs. A diferencia de las GPUs:</p>
+<ul class="space-y-3 font-body-base list-disc pl-5">
+<li><strong class="text-primary">Determinismo:</strong> El flujo de datos es completamente predecible en el tiempo, eliminando la necesidad de gestión compleja de caché.</li>
+<li><strong class="text-primary">Baja Latencia:</strong> Al no depender de memoria externa masiva (HBM) de la misma forma que una GPU, el tiempo hasta el primer token es drásticamente menor.</li>
+<li><strong class="text-primary">Throughput:</strong> Permite alcanzar velocidades de 500+ tokens/seg en modelos como Llama 3 8B.</li>
+</ul>
+</div>
+<span class="text-[11px] text-outline mt-1 font-code-label">Groq Llama3-8b · 14:03</span>
+</div>
+</div>
+<!-- Thinking State -->
+<div class="flex justify-start gap-4">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0 text-on-primary font-bold text-sm">
+                        G
+                    </div>
+<div class="flex items-center gap-3 px-4 py-2 bg-surface-container-low rounded-full border border-outline-variant/30">
+<div class="flex gap-1">
+<span class="w-1.5 h-1.5 bg-primary rounded-full animate-bounce" style="animation-delay: 0.1s"></span>
+<span class="w-1.5 h-1.5 bg-primary rounded-full animate-bounce" style="animation-delay: 0.2s"></span>
+<span class="w-1.5 h-1.5 bg-primary rounded-full animate-bounce" style="animation-delay: 0.3s"></span>
+</div>
+<span class="text-sm font-body-sm text-on-surface-variant italic">Pensando...</span>
+</div>
+</div>
+</div>
+<!-- Input Area -->
+<div class="absolute bottom-0 left-0 w-full p-4 md:p-6 bg-gradient-to-t from-background via-background to-transparent pt-12">
+<div class="max-w-4xl mx-auto flex flex-col gap-3">
+<div class="relative flex items-end gap-3 p-2 bg-surface-container-highest/50 rounded-[24px] border border-outline-variant focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/20 transition-all backdrop-blur-md">
+<textarea class="w-full bg-transparent border-none focus:ring-0 resize-none py-3 px-4 text-on-surface placeholder-on-surface-variant font-body-base" placeholder="Hazme una pregunta..." rows="1" style="min-height: 48px; max-height: 200px;"></textarea>
+<button class="p-3 bg-primary text-on-primary rounded-full hover:bg-primary/90 transition-colors active:scale-90 flex-shrink-0 mb-1">
+<span class="material-symbols-outlined fill-icon">send</span>
+</button>
+</div>
+<div class="flex justify-between items-center px-4">
+<p class="text-[12px] text-on-surface-variant font-body-sm flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+                            Tu conversación se guarda localmente en esta sesión
+                        </p>
+<button class="text-[12px] font-code-label text-outline hover:text-error transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">delete_sweep</span>
+                            Limpiar historial
+                        </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Right Metrics Panel -->
+<aside class="hidden lg:flex flex-col w-[340px] fixed right-0 top-[73px] h-full bg-surface-container p-6 border-l border-outline-variant space-y-6">
+<div class="flex items-center justify-between mb-2">
+<h3 class="font-code-label text-code-label text-outline uppercase tracking-widest">Real-time Metrics</h3>
+<span class="material-symbols-outlined text-primary text-[20px]">analytics</span>
+</div>
+<!-- Stats Card -->
+<div class="bg-surface-container-high border border-outline-variant rounded-2xl p-5 space-y-5 shadow-sm">
+<div>
+<p class="text-[11px] font-code-label text-outline uppercase mb-3">Model Configuration</p>
+<div class="flex items-center gap-3 p-3 bg-background rounded-xl border border-outline-variant/30">
+<span class="material-symbols-outlined text-tertiary">memory</span>
+<span class="font-code-label text-sm text-on-surface">llama3-8b-8192</span>
+</div>
+</div>
+<div class="grid grid-cols-1 gap-4">
+<div class="flex justify-between items-center py-2 border-b border-outline-variant/20">
+<span class="text-sm font-body-sm text-on-surface-variant">Performance</span>
+<span class="font-code-label text-tertiary font-bold">65.2 tokens/s</span>
+</div>
+<div class="flex justify-between items-center py-2 border-b border-outline-variant/20">
+<span class="text-sm font-body-sm text-on-surface-variant">Latency</span>
+<span class="font-code-label text-on-surface">14ms</span>
+</div>
+</div>
+<div class="space-y-3">
+<p class="text-[11px] font-code-label text-outline uppercase">Token Usage</p>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-code-label">
+<span class="text-on-surface-variant">Prompt</span>
+<span class="text-on-surface">120</span>
+</div>
+<div class="w-full bg-surface-variant rounded-full h-1.5 overflow-hidden">
+<div class="bg-primary h-full" style="width: 25%"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-code-label">
+<span class="text-on-surface-variant">Completion</span>
+<span class="text-on-surface">450</span>
+</div>
+<div class="w-full bg-surface-variant rounded-full h-1.5 overflow-hidden">
+<div class="bg-secondary h-full" style="width: 75%"></div>
+</div>
+</div>
+<div class="flex justify-between items-center pt-2 mt-2">
+<span class="text-sm font-body-sm font-bold">Total Tokens</span>
+<span class="font-code-label text-primary font-black text-lg">570</span>
+</div>
+</div>
+</div>
+<!-- Accumulative Card -->
+<div class="bg-surface-container-highest border border-primary/20 rounded-2xl p-5 flex items-center justify-between shadow-lg relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent"></div>
+<div class="relative">
+<p class="text-[11px] font-code-label text-primary/70 uppercase">Session Total</p>
+<p class="text-3xl font-display-lg font-black text-on-surface">2.4k <span class="text-sm font-medium text-outline">tokens</span></p>
+</div>
+<div class="relative w-12 h-12 rounded-full border-2 border-primary/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">bolt</span>
+</div>
+</div>
+<!-- Visualization Placeholder -->
+<div class="flex-1 bg-surface-container-low rounded-2xl border border-outline-variant/30 p-4 relative flex flex-col justify-end overflow-hidden">
+<div class="absolute top-4 left-4">
+<p class="text-[11px] font-code-label text-outline uppercase">Load History</p>
+</div>
+<!-- Simple CSS Chart Bars -->
+<div class="flex items-end justify-between h-24 gap-1 mt-auto">
+<div class="w-full bg-tertiary/20 rounded-t-sm" style="height: 40%"></div>
+<div class="w-full bg-tertiary/40 rounded-t-sm" style="height: 65%"></div>
+<div class="w-full bg-tertiary/20 rounded-t-sm" style="height: 35%"></div>
+<div class="w-full bg-tertiary/60 rounded-t-sm" style="height: 80%"></div>
+<div class="w-full bg-tertiary/30 rounded-t-sm" style="height: 50%"></div>
+<div class="w-full bg-tertiary/50 rounded-t-sm" style="height: 90%"></div>
+<div class="w-full bg-tertiary/10 rounded-t-sm" style="height: 20%"></div>
+<div class="w-full bg-tertiary/40 rounded-t-sm" style="height: 60%"></div>
+<div class="w-full bg-tertiary/20 rounded-t-sm" style="height: 45%"></div>
+<div class="w-full bg-tertiary/80 rounded-t-sm" style="height: 95%"></div>
+</div>
+</div>
+</aside>
+<!-- Mobile Navigation Shell -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center h-16 px-2 bg-surface-container border-t border-outline-variant shadow-lg rounded-t-xl">
+<div class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 cursor-pointer">
+<span class="material-symbols-outlined fill-icon">chat</span>
+<span class="text-[10px] font-body-sm">Chat</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary cursor-pointer active:scale-90 transition-transform">
+<span class="material-symbols-outlined">bar_chart</span>
+<span class="text-[10px] font-body-sm">Metrics</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary cursor-pointer active:scale-90 transition-transform">
+<span class="material-symbols-outlined">history</span>
+<span class="text-[10px] font-body-sm">History</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary cursor-pointer active:scale-90 transition-transform">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-body-sm">Settings</span>
+</div>
+</nav>
+</div>
+<script>
+        // Auto-expand textarea
+        const textarea = document.querySelector('textarea');
+        textarea.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = (this.scrollHeight) + 'px';
+        });
+
+        // Simple interactivity for mobile layout toggle could be added here
+        // if needed, but the current layout is responsive via Tailwind.
+    </script>
+</body></html>
